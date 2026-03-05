@@ -9,10 +9,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
-with open("model/churn_model.pkl", "rb") as f:
+with open("models/churn_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-with open("model/feature_names.pkl", "rb") as f:
+with open("models/feature_names.pkl", "rb") as f:
     feature_names = pickle.load(f)
 
 
@@ -70,3 +70,4 @@ def predict(customer: CustomerData):
         "churn_probability": round(float(probability), 4),
         "risk_level": "High" if probability > 0.7 else "Medium" if probability > 0.4 else "Low"
     }
+
